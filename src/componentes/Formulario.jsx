@@ -9,7 +9,7 @@ export default function Formulario({ tareas }) {
     const hanlderSubmit = (e) => {
         e.preventDefault();
 
-        const tarea = {
+        const tareas = {
             titulo,
             categoria,
             prioridad,
@@ -19,21 +19,19 @@ export default function Formulario({ tareas }) {
 
     return (
 
-
-
         <><input
             type="text"
             placeholder="titulo"
             onChange={(e) => setTitulo(e.target.value)}
             value={titulo} />
             <input
-            type="text"
-            placeholder="descripcion"
-            onChange={(e) => setDescripcion(e.target.value)}
-            value={descripcion} />
-            
-            
-            
+                type="text"
+                placeholder="descripcion"
+                onChange={(e) => setDescripcion(e.target.value)}
+                value={descripcion} />
+
+
+
             <><><select onChange={(e) => setCategorias(e.target.value)}
                 value={categoria}
             >
@@ -43,6 +41,7 @@ export default function Formulario({ tareas }) {
                 <option value="trabajo">Docente</option>
                 <option value="particular">Docente</option>
             </select>
+
                 <select
                     onChange={(e) => setPrioridad(e.target.value)}
                     value={prioridad}

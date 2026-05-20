@@ -1,16 +1,25 @@
-export default function Tarjeta({titulo, categoria, prioridad, descripcion}) {
+import Tarjeta from "./Tarjeta";
+
+
+export default function ListadoDeTareas({tareas}) {
 
     return(
-        <div className="Tarjeta"
-        >
-            <span
-             className="Eliminar"
-             onClick={() => alert("Eliminar")}
-             >X</span>
-             <h1>{prioridad}</h1>
-            <h2>{titulo}</h2>
-            <h2>{categoria}</h2>
-            <h3>{descripcion}</h3>
+        <div style={{flex: 3}}> 
+            <h1>ListadoDeTareas</h1>
+            <div className="ListadoDeTareas">
+            {tareas.map((tareas, index) =>
+
+            <Tarjeta 
+                key={index}
+                prioridad={persona.prioridad}
+                titulo={persona.titulo}
+                categoria={persona.categoria}
+                descripcion={persona.descripcion}
+
+            />
+
+            )}
+            </div>
         </div>
     )
 }
