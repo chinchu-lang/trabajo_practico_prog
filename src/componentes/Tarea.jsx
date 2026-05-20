@@ -10,12 +10,12 @@ export default function ListadoDeTareas({tareas}) {
             {tareas.map((tareas, index) =>
 
             <Tarjeta 
-                key={index}
-                prioridad={persona.prioridad}
-                titulo={persona.titulo}
-                categoria={persona.categoria}
-                descripcion={persona.descripcion}
-
+                key={tareas.id}
+                prioridad={tareas.prioridad}
+                titulo={tareas.titulo}
+                categoria={tareas.categoria}
+                descripcion={tareas.descripcion}
+                eliminar={() => eliminar(tareas.id)}
             />
 
             )}

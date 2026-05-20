@@ -1,55 +1,51 @@
-import { useState } from "react";
+import useTarea from "../hook/useTarea";
 
-export default function Formulario({ tareas }) {
-    const [titulo, setTitulo] = useState("")
-    const [categoria, setCategorias] = useState("-1")
-    const [prioridad, setPrioridad] = useState("-1")
-    const [descripcion, setDescripcion] = useState("")
+export default function Formulario({ guardar }) {
+    const [tarea, setDatoTarea] = useTarea();
+
 
     const hanlderSubmit = (e) => {
         e.preventDefault();
+        const tarea = persona.rol == "alumno";
 
-        const tareas = {
-            titulo,
-            categoria,
-            prioridad,
-            descripcion,
-        }
+        const id = (new Date()).getTime();
+
+        guardar({ ...persona, alumno, id })
     }
 
+
     return (
-
-        <><input
-            type="text"
-            placeholder="titulo"
-            onChange={(e) => setTitulo(e.target.value)}
-            value={titulo} />
-            <input
-                type="text"
-                placeholder="descripcion"
-                onChange={(e) => setDescripcion(e.target.value)}
-                value={descripcion} />
-
-
-
-            <><><select onChange={(e) => setCategorias(e.target.value)}
-                value={categoria}
-            >
-                <option value="-1" disabled>Seleccionar una prioridad</option>
-                <option value="hogar">Alumno</option>
-                <option value="escuela">Docente</option>
-                <option value="trabajo">Docente</option>
-                <option value="particular">Docente</option>
-            </select>
-
+        <div className="Formulario">
+            <h1>Componente Formulario</h1>
+            <form onSubmit={hanlderSubmit}>
+                <input
+                    type="text"
+                    placeholder="descripcion"
+                    onChange={(e) => setDatoPersona("documento", e.target.value)}
+                    value={persona.documento}
+                />
+                <input
+                    type="text"
+                    placeholder="titulo"
+                    onChange={(e) => setDatoPersona("division", e.target.value)}
+                    value={persona.division}
+                />
                 <select
-                    onChange={(e) => setPrioridad(e.target.value)}
-                    value={prioridad}
+                    onChange={(e) => setRol("categoria", e.target.value)}
+                    value={persona.rol}
                 >
-                    <option value="-1" disabled>Seleccionar una prioridad</option>
-                    <option value="leve">leve</option>
-                    <option value="importante">importante</option>
-                    <option value="urgente">urgente</option>
-                </select></><button type="submit">Guardar</button></></>
+                    <option value="alumno">Alumno</option>
+                    <option value="docente">Docente</option>
+                </select>
+                <select
+                    onChange={(e) => setRol("prioridad", e.target.value)}
+                    value={persona.rol}
+                >
+                    <option value="alumno">Alumno</option>
+                    <option value="docente">Docente</option>
+                </select>
+                <button type="submit">Guardar</button>
+            </form>
+        </div>
     )
 }
