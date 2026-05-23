@@ -1,18 +1,15 @@
-import useTarea from "../hook/useTarea";
+import useTarea from "../hooks/useTarea";
 
 export default function Formulario({ guardar }) {
     const [tarea, setDatoTarea] = useTarea();
 
-
     const hanlderSubmit = (e) => {
         e.preventDefault();
-        const tarea = persona.rol == "alumno";
 
         const id = (new Date()).getTime();
 
-        guardar({ ...persona, alumno, id })
+        guardar({ ...tarea, id });
     }
-
 
     return (
         <div className="Formulario">
@@ -20,29 +17,34 @@ export default function Formulario({ guardar }) {
             <form onSubmit={hanlderSubmit}>
                 <input
                     type="text"
-                    placeholder="descripcion"
-                    onChange={(e) => setDatoPersona("documento", e.target.value)}
-                    value={persona.documento}
+                    placeholder="Titulo"
+                    onChange={(e) => setDatoTarea("titulo", e.target.value)}
+                    value={tarea.titulo}
                 />
                 <input
                     type="text"
-                    placeholder="titulo"
-                    onChange={(e) => setDatoPersona("division", e.target.value)}
-                    value={persona.division}
+                    placeholder="Descripcion"
+                    onChange={(e) => setDatoTarea("descripcion", e.target.value)}
+                    value={tarea.descripcion}
                 />
                 <select
-                    onChange={(e) => setRol("categoria", e.target.value)}
-                    value={persona.rol}
+                    onChange={(e) => setDatoTarea("categoria", e.target.value)}
+                    value={tarea.categoria}
                 >
-                    <option value="alumno">Alumno</option>
-                    <option value="docente">Docente</option>
+                    <option value="-1" disabled>Seleccionar una categoria</option>
+                    <option value="hogar">Hogar</option>
+                    <option value="escuela">Escuela</option>
+                    <option value="trabajo">Trabajo</option>
+                    <option value="particular">Particular</option>
                 </select>
                 <select
-                    onChange={(e) => setRol("prioridad", e.target.value)}
-                    value={persona.rol}
+                    onChange={(e) => setDatoTarea("prioridad", e.target.value)}
+                    value={tarea.prioridad}
                 >
-                    <option value="alumno">Alumno</option>
-                    <option value="docente">Docente</option>
+                    <option value="-1" disabled>Seleccionar una prioridad</option>
+                    <option value="leve">Leve</option>
+                    <option value="importante">Importante</option>
+                    <option value="urgente">Urgente</option>
                 </select>
                 <button type="submit">Guardar</button>
             </form>
