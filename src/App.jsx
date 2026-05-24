@@ -1,33 +1,46 @@
 import { useState } from "react"
-import Listado from "./componentes/L"
+import ListadoDeTareas from "./componentes/Tarea"
 import Formulario from "./componentes/Formulario"
 import "./App.css"
 
 const tareasDefault = [
-    {titulo: "resolver tarea de prog", categoria: "escuela", prioridad: "urgente",descripcion:"entregar en tiempo y forma la tarea que pide el profe"},
-    {titulo: "resolver tarea de prog", categoria: "escuela", prioridad: "urgente",descripcion:"entregar en tiempo y forma la tarea que pide el profe"},
-    {titulo: "resolver tarea de prog", categoria: "escuela", prioridad: "urgente",descripcion:"entregar en tiempo y forma la tarea que pide el profe"},
-    {titulo: "resolver tarea de prog", categoria: "escuela", prioridad: "urgente",descripcion:"entregar en tiempo y forma la tarea que pide el profe"},
-]
-export default function App() {
-  const [tarea, setTarea] = useState(tareasDefault);
-    
-    let nuevastarea = [...tarea];
-    nuevastarea.push(tarea);
-    setTarea(nuevastarea);
-  }
+    { id: 1, titulo: "resolver tarea de prog", categoria: "escuela", prioridad: "urgente", descripcion: "entregar en tiempo y forma la tarea que pide el profe" },
+    { id: 2, titulo: "resolver tarea de prog", categoria: "escuela", prioridad: "urgente", descripcion: "entregar en tiempo y forma la tarea que pide el profe" },
+    { id: 3, titulo: "resolver tarea de prog", categoria: "escuela", prioridad: "urgente", descripcion: "entregar en tiempo y forma la tarea que pide el profe" },
+    { id: 4, titulo: "resolver tarea de prog", categoria: "escuela", prioridad: "urgente", descripcion: "entregar en tiempo y forma la tarea que pide el profe" },
+];
 
-  return (
-    <div className="App">
-      <h1>Componente APP</h1>
-      <div className="Contenedor">
-      <Formulario
-        tarea={(tarea) => guardar(tarea)}
-      />
-      <Listado
-        tarea={tarea}
-      />
-      </div>
-    </div>
-  )
-  
+export default function App() {
+    const [tareas, setTareas] = useState(tareasDefault);
+
+    const guardar = (tarea) => {
+        console.log(tarea);
+
+        let nuevasTareas = [...tareas];
+        nuevasTareas.push(tarea);
+        setTareas(nuevasTareas);
+    }
+
+    const eliminar = (tarea_id) => {
+        const nuevasTareas = tareas.filter((tarea) => tarea.id != tarea_id);
+
+        console.log(nuevasTareas);
+
+        setTareas(nuevasTareas);
+    }
+
+    return (
+        <div className="App">
+            <h1>Componente APP</h1>
+            <div className="Contenedor">
+                <Formulario
+                    guardar={(tarea) => guardar(tarea)}
+                />
+                <ListadoDeTareas
+                    tareas={tareas}
+                    eliminar={(tarea_id) => eliminar(tarea_id)}
+                />
+            </div>
+        </div>
+    )
+}

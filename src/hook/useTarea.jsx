@@ -1,12 +1,10 @@
 import { useState } from "react";
 
 export default function useTarea() {
-    const [prioridad, set] = useState("");
-    const [titulo, set] = useState("");
-    const [categoria, set] = useState("");
-    const [descripcion, set] = useState("");
-
-    
+    const [prioridad, setPrioridad] = useState("");
+    const [titulo, setTitulo] = useState("");
+    const [categoria, setCategoria] = useState("");
+    const [descripcion, setDescripcion] = useState("");
 
     const cambiarDato = (campo, valor) => {
         const opciones = {
