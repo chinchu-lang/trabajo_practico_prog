@@ -1,7 +1,8 @@
-export default function Tarjeta({ titulo, categoria, prioridad, descripcion, eliminar }) {
+export default function Tarjeta({ titulo, categoria, prioridad, descripcion, eliminar })
+ {
 
     return (
-        <div className="Tarjeta">
+        <div className={`Tarjeta ${prioridad}`}>
             <span
                 className="Eliminar"
                 onClick={() => eliminar()}

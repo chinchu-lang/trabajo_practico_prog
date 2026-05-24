@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --bg: #0f0f0f;
+  --surface: #1a1a1a;
+  --surface2: #242424;
+  --border: #2e2e2e;
+  --text: #f0f0f0;
+  --text-muted: #888;
+
+  --leve: #4ade80;
+  --leve-bg: #052e16;
+  --importante: #facc15;
+  --importante-bg: #1c1700;
+  --urgente: #f87171;
+  --urgente-bg: #2d0b0b;
+
+  --accent: #e0ff4f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+}
+
+.App {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.App > h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5rem;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 2.5rem;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 1rem;
+}
+
+/* ── Contenedor ── */
+.Contenedor {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+/* ── Formulario ── */
+.Formulario {
+  flex: 1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  position: sticky;
+  top: 2rem;
+}
+
+.Formulario h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 1.2rem;
+}
+
+.Formulario form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.Formulario input,
+.Formulario select,
+.Formulario textarea {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  padding: 0.65rem 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.Formulario input:focus,
+.Formulario select:focus {
+  border-color: var(--accent);
+}
+
+.Formulario input::placeholder {
+  color: var(--text-muted);
+}
+
+.Formulario select option {
+  background: var(--surface2);
+}
+
+.Formulario button[type="submit"] {
+  margin-top: 0.5rem;
+  background: var(--accent);
+  color: #0f0f0f;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+.Formulario button[type="submit"]:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+/* ── Listado ── */
+.ListadoDeTareas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+/* ── Tarjeta ── */
+.Tarjeta {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.2rem 1rem;
+  position: relative;
+  transition: transform 0.15s, border-color 0.15s;
+  animation: slideIn 0.25s ease;
+  width: 160px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.4rem;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.Tarjeta:hover {
+  transform: translateY(-2px);
+  border-color: #444;
+}
+
+/* Badge de prioridad en h1 */
+.Tarjeta h1 {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  margin-bottom: 0.5rem;
+}
+
+.Tarjeta.leve       { border-left: 3px solid var(--leve); }
+.Tarjeta.leve h1    { background: var(--leve-bg); color: var(--leve); }
+
+.Tarjeta.importante       { border-left: 3px solid var(--importante); }
+.Tarjeta.importante h1    { background: var(--importante-bg); color: var(--importante); }
+
+.Tarjeta.urgente       { border-left: 3px solid var(--urgente); }
+.Tarjeta.urgente h1    { background: var(--urgente-bg); color: var(--urgente); }
+
+.Tarjeta h2 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+}
+
+.Tarjeta h3 {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+/* Botón eliminar */
+.Eliminar {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.15rem 0.45rem;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.Eliminar:hover {
+  color: var(--urgente);
+  border-color: var(--urgente);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .Contenedor {
+    flex-direction: column;
+  }
+
+  .Formulario {
+    position: static;
+  }
+
+  .App > h1 {
+    font-size: 3.5rem;
+  }
+}

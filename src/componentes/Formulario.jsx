@@ -1,4 +1,4 @@
-import useTarea from "../hooks/useTarea";
+import useTarea from "../hook/useTarea";
 
 export default function Formulario({ guardar }) {
     const [tarea, setDatoTarea] = useTarea();
