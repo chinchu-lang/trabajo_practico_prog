@@ -4,7 +4,6 @@ export default function ListadoDeTareas({ tareas, eliminar }) {
 
     return (
         <div style={{ flex: 3 }}>
-            <h1>ListadoDeTareas</h1>
             <div className="ListadoDeTareas">
                 {tareas.map((tarea) =>
                     <Tarjeta

@@ -33,22 +33,35 @@ export default function App() {
     const tareasFiltradas = filtro === "todas" ? tareas : tareas.filter((t) => t.categoria === filtro);
     return (
         <div className="App">
-            <h1>Componente APP</h1>
+            <h1>Listado De Tareas</h1>
             <div className="Contenedor">
                 <Formulario
                     guardar={(tarea) => guardar(tarea)}
 
                 />
-                <select onChange={(e) => setFiltro(e.target.value)} value={filtro}>
-                    <option value="todas">Todas</option>
-                    <option value="hogar">Hogar</option>
-                    <option value="escuela">Escuela</option>
-                    <option value="trabajo">Trabajo</option>
-                    <option value="particular">Particular</option>
-                </select>
-
+                <div className="Filtros">
+                    <h2 className="Filtros__titulo">Filtros</h2>
+                    <div className="Filtros__grupo">
+                        <label className="Filtros__label" htmlFor="filtro-categoria">Categoría</label>
+                        <div className="Filtros__selectWrapper">
+                            <select
+                                id="filtro-categoria"
+                                className="Filtros__select"
+                                onChange={(e) => setFiltro(e.target.value)}
+                                value={filtro}
+                            >
+                                <option value="todas">Todas</option>
+                                <option value="hogar">Hogar</option>
+                                <option value="escuela">Escuela</option>
+                                <option value="trabajo">Trabajo</option>
+                                <option value="particular">Particular</option>
+                            </select>
+                            <span className="Filtros__arrow">▾</span>
+                        </div>
+                    </div>
+                </div>
                 <ListadoDeTareas
-                    tareas={tareasFiltradas}   // ← acá el cambio
+                    tareas={tareasFiltradas}   // filtros filtrosos
                     eliminar={(id) => eliminar(id)}
                 />
             </div>
